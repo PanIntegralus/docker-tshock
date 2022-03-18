@@ -2,7 +2,7 @@
 ##########
 # Default Options
 ##########
-IMAGE="mark2dot0/tshock:latest"
+IMAGE="pabloasmo/tshock:latest"
 CONTAINER=""
 BASEDIR=""
 WORLD="world0.wld"

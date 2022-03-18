@@ -1,15 +1,18 @@
 # Dockerfile for a TShock Terraria Server
-# https://github.com/kalhartt/docker-tshock
-FROM mono:3.10.0
-MAINTAINER kalhartt <kalhartt@gmail.com>
+# https://github.com/PanIntegralus/docker-tshock
+FROM mono:latest
+MAINTAINER PanIntegralus <pablikoxyt@gmail.com>
 
 # Install unzip package
 RUN apt-get -qq update && \
     apt-get -qqy install unzip
 
+ENV TSHOCK_VERSION=4.5.16
+ENV TERRARIA_VERSION=1.4.3.6
+
 # Download and setup TShock
-RUN curl -sL https://github.com/NyxStudios/TShock/releases/download/v4.3.12/tshock_4.3.12.zip > /tmp/tshock_4.3.12.zip && \
-    unzip /tmp/tshock_4.3.12.zip -d /opt/tshock
+RUN curl -sL https://github.com/Pryaxis/TShock/releases/download/v${TSHOCK_VERSION}/TShock${TSHOCK_VERSION}_Terraria${TERRARIA_VERSION}.zip > /tmp/tshock.zip && \
+    unzip /tmp/tshock.zip -d /opt/tshock
 
 COPY config.json /opt/tshock/tshock/config.json
 
